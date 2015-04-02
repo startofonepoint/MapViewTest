@@ -13,6 +13,9 @@
 		5742BB281AB83D25004B2E10 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5742BB271AB83D25004B2E10 /* Images.xcassets */; };
 		5742BB2B1AB83D25004B2E10 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5742BB291AB83D25004B2E10 /* LaunchScreen.xib */; };
 		5742BB371AB83D25004B2E10 /* MapViewTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5742BB361AB83D25004B2E10 /* MapViewTestTests.swift */; };
+		5742BB411AB83DE2004B2E10 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5742BB401AB83DE2004B2E10 /* MapKit.framework */; };
+		5777485A1AC2D52900989AB3 /* SOSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577748591AC2D52900989AB3 /* SOSingleton.swift */; };
+		57DD58461AB848FE00F4B626 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DD58451AB848FE00F4B626 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		5742BB301AB83D25004B2E10 /* MapViewTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapViewTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5742BB351AB83D25004B2E10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5742BB361AB83D25004B2E10 /* MapViewTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewTestTests.swift; sourceTree = "<group>"; };
+		5742BB401AB83DE2004B2E10 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		577748591AC2D52900989AB3 /* SOSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOSingleton.swift; path = ../SOSingleton.swift; sourceTree = "<group>"; };
+		57DD58451AB848FE00F4B626 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DD58461AB848FE00F4B626 /* CoreLocation.framework in Frameworks */,
+				5742BB411AB83DE2004B2E10 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +67,11 @@
 		5742BB121AB83D22004B2E10 = {
 			isa = PBXGroup;
 			children = (
+				57DD58451AB848FE00F4B626 /* CoreLocation.framework */,
 				5742BB1D1AB83D23004B2E10 /* MapViewTest */,
 				5742BB331AB83D25004B2E10 /* MapViewTestTests */,
 				5742BB1C1AB83D23004B2E10 /* Products */,
+				5742BB401AB83DE2004B2E10 /* MapKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +87,7 @@
 		5742BB1D1AB83D23004B2E10 /* MapViewTest */ = {
 			isa = PBXGroup;
 			children = (
+				577748591AC2D52900989AB3 /* SOSingleton.swift */,
 				5742BB201AB83D24004B2E10 /* AppDelegate.swift */,
 				5742BB221AB83D24004B2E10 /* ViewController.swift */,
 				5742BB241AB83D24004B2E10 /* Main.storyboard */,
@@ -161,6 +172,7 @@
 				TargetAttributes = {
 					5742BB1A1AB83D23004B2E10 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = MSR962JFFX;
 					};
 					5742BB2F1AB83D25004B2E10 = {
 						CreatedOnToolsVersion = 6.2;
@@ -213,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5742BB231AB83D24004B2E10 /* ViewController.swift in Sources */,
+				5777485A1AC2D52900989AB3 /* SOSingleton.swift in Sources */,
 				5742BB211AB83D24004B2E10 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MapViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -348,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = MapViewTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -407,6 +422,7 @@
 				5742BB3C1AB83D25004B2E10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5742BB3D1AB83D25004B2E10 /* Build configuration list for PBXNativeTarget "MapViewTestTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +431,7 @@
 				5742BB3F1AB83D25004B2E10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

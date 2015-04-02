@@ -16,6 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        var singleton:SOSingleton = SOSingleton.getSharedInstance
+        var error:NSError?
+        let docDirectories:Array = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let pathToFile = docDirectories[0] as String + "setting.plist"
+        
+        let fileExist = NSFileManager.defaultManager().fileExistsAtPath(pathToFile)
+        if fileExist == false { //화일이 존재하지 않으면 화일을 생성하고 화일에 내용을 저장한다.
+            var dic2serialize = Dictionary<String, AnyObject>()
+        
+            dic2serialize["longtitude"] = singleton.longtitude
+            dic2serialize["latitude"] = singleton.latitude
+        
+            var settingData:NSData = NSPropertyListSerialization.dataWithPropertyList(dic2serialize, format: NSPropertyListFormat.XMLFormat_v1_0, options: 0, error: &error)!
+            var fileWrite:Bool = settingData.writeToFile(pathToFile, atomically: true)
+        
+            if fileWrite == false {
+                println("setting Data 쓰기 에러, error \(error?.localizedDescription)")
+            }
+        }
+        else { //화일이 존재하면 화일을 읽는다.
+            var format:UnsafeMutablePointer<NSPropertyListFormat> = UnsafeMutablePointer()
+            var plistData = NSData(contentsOfFile: pathToFile)
+            let property:Dictionary<String, AnyObject> = NSPropertyListSerialization.propertyListWithData(plistData!, options: NSPropertyListReadOptions.allZeros, format: format, error: &error) as Dictionary
+            singleton.longtitude = property["longtitude"] as? NSNumber
+            singleton.latitude = property["latitude"] as? NSNumber
+        }
+        
         return true
     }
 
@@ -27,6 +55,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        var singleton:SOSingleton = SOSingleton.getSharedInstance
+        var error:NSError?
+        let docDirectories:Array = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
+        let pathToFile = docDirectories[0] as String + "setting.plist"
+        
+        let fileExist = NSFileManager.defaultManager().fileExistsAtPath(pathToFile)
+        var dic2serialize = Dictionary<String, AnyObject>()
+        
+        dic2serialize["longtitude"] = singleton.longtitude
+        dic2serialize["latitude"] = singleton.latitude
+        
+        var settingData:NSData = NSPropertyListSerialization.dataWithPropertyList(dic2serialize, format: NSPropertyListFormat.XMLFormat_v1_0, options: 0, error: &error)!
+        var fileWrite:Bool = settingData.writeToFile(pathToFile, atomically: true)
+        
+        if fileWrite == false {
+            println("setting Data 쓰기 에러, error \(error?.localizedDescription)")
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
